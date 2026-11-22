@@ -17,14 +17,19 @@ mvn javafx:run
 
 You should see a 640×360 window titled **Mini Player** with a centered label.
 
-## Tags (once published)
+## Series map
 
-| Tag | Post |
-| --- | --- |
-| `part-1` | Stage, Scene, Application |
-| `part-2` | Layout and controls (planned) |
-| `part-3` | State and events (planned) |
-| `part-4` | JavaFX Media (planned) |
+| Tag | Phase | Post |
+| --- | --- | --- |
+| `part-1` | JavaFX | Stage, Scene, Application |
+| `part-2` | JavaFX | Layout and controls (planned) |
+| `part-3` | JavaFX | State and events (planned) |
+| `part-4` | JavaFX | JavaFX Media (planned) |
+| `part-5` | Beyond | VLC architecture (planned) |
+| `part-6` | Beyond | libVLC via vlcj (planned) |
+| `part-7` | Beyond | Playlist / packaging (optional) |
+
+Draft posts live in `zlu.github.io/_drafts/2026-11-22-javafx-ui-to-libvlc-part-*.md`.
 
 ```sh
 git checkout part-1
