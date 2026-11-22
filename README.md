@@ -1,20 +1,43 @@
 # javafx-mini-player
 
-Companion sample for [Play a local MP4 with JavaFX Media](https://zlu.github.io/) on [zlu.github.io](https://zlu.github.io/).
+Companion sample for the JavaFX / libVLC posts on [zlu.github.io](https://zlu.github.io/).
 
-Opens a local file with JavaFX `Media` / `MediaPlayer` / `MediaView`. Format support is platform-dependent; use a short H.264/AAC MP4 that already plays in the OS media player.
+Same window chrome (Open, Play/Pause, seek slider). Two engines:
+
+| Main class | Engine | Run |
+| --- | --- | --- |
+| `VlcMiniPlayerApp` (default) | libVLC via [vlcj](https://github.com/caprica/vlcj) + [vlcj-javafx](https://github.com/caprica/vlcj-javafx) | `mvn javafx:run` |
+| `MiniPlayerApp` | JavaFX `Media` / `MediaPlayer` / `MediaView` | `mvn javafx:run -Djavafx.mainClass=io.github.zlu.javafxplayer.MiniPlayerApp` |
 
 ## Requirements
 
-- JDK 23 or newer (JavaFX 25)
+- JDK 21+ (sample uses JavaFX 25)
 - Maven 3.9+
+- **For the libVLC app:** a system VLC install that provides `libvlc` (on macOS, `/Applications/VLC.app` is enough)
 
-## Run
+## Run (libVLC)
 
 ```sh
 mvn javafx:run
 ```
 
-Use **Open…** and pick an `.mp4`. Play/Pause and the seek slider track `currentTimeProperty()`.
+Optional path (skips the file dialog):
 
-On macOS, prefer H.264/AAC or HEVC/AAC MP4s that already play in QuickTime. JavaFX 21 had a known AVFoundation bug (audio only / black video) fixed in JavaFX 23+; this project uses 25.x.
+```sh
+mvn javafx:run -Djavafx.args="$PWD/sample-h264.mp4"
+```
+
+Use **Open…** for other files. libVLC handles a much wider range of containers/codecs than JavaFX Media.
+
+## Run (JavaFX Media only)
+
+```sh
+mvn javafx:run -Djavafx.mainClass=io.github.zlu.javafxplayer.MiniPlayerApp
+```
+
+Prefer a short H.264/AAC MP4. Format support is platform-dependent.
+
+## Notes
+
+- Video in the libVLC app is drawn into a JavaFX `ImageView` through `ImageViewVideoSurface` (PixelBuffer). Heavyweight AWT embed does not work on modern macOS Java.
+- Shipping an app that bundles VLC natives has LGPL obligations; this sample expects a user-installed VLC.

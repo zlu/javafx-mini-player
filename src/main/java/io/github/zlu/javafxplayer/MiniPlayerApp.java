@@ -35,6 +35,7 @@ import java.io.File;
  * already plays in the OS media player.
  *
  * <p>Companion post: Play a local MP4 with JavaFX Media (zlu.github.io).
+ * For libVLC, see {@link VlcMiniPlayerApp}.
  */
 public class MiniPlayerApp extends Application {
 

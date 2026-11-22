@@ -6,14 +6,16 @@
 
   <groupId>io.github.zlu</groupId>
   <artifactId>javafx-mini-player</artifactId>
-  <version>0.1.0-SNAPSHOT</version>
+  <version>0.2.0-SNAPSHOT</version>
   <name>javafx-mini-player</name>
-  <description>Companion sample: play a local MP4 with JavaFX Media (zlu.github.io)</description>
+  <description>Companion sample: JavaFX chrome over JavaFX Media or libVLC via vlcj (zlu.github.io)</description>
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.release>21</maven.compiler.release>
     <javafx.version>25.0.5.1</javafx.version>
+    <vlcj.version>4.12.1</vlcj.version>
+    <vlcj.javafx.version>1.2.1</vlcj.javafx.version>
   </properties>
 
   <dependencies>
@@ -26,6 +28,16 @@
       <groupId>org.openjfx</groupId>
       <artifactId>javafx-media</artifactId>
       <version>${javafx.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>uk.co.caprica</groupId>
+      <artifactId>vlcj</artifactId>
+      <version>${vlcj.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>uk.co.caprica</groupId>
+      <artifactId>vlcj-javafx</artifactId>
+      <version>${vlcj.javafx.version}</version>
     </dependency>
   </dependencies>
 
@@ -41,9 +53,10 @@
         <artifactId>javafx-maven-plugin</artifactId>
         <version>0.0.8</version>
         <configuration>
-          <mainClass>io.github.zlu.javafxplayer.MiniPlayerApp</mainClass>
+          <!-- Default: libVLC engine. Media-only: -Djavafx.mainClass=io.github.zlu.javafxplayer.MiniPlayerApp -->
+          <mainClass>io.github.zlu.javafxplayer.VlcMiniPlayerApp</mainClass>
           <options>
-            <option>--enable-native-access=javafx.graphics,javafx.media</option>
+            <option>--enable-native-access=javafx.graphics,javafx.media,ALL-UNNAMED</option>
           </options>
         </configuration>
       </plugin>
