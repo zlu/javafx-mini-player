@@ -1,37 +1,20 @@
 # javafx-mini-player
 
-Companion code for the blog series **JavaFX UI → libVLC** on [zlu.github.io](https://zlu.github.io/).
+Companion sample for [Play a local MP4 with JavaFX Media](https://zlu.github.io/) on [zlu.github.io](https://zlu.github.io/).
 
-Phase 1 stays inside JavaFX (UI first, then `MediaPlayer`). Phase 2 swaps the engine for libVLC via `vlcj` — that part is beyond pure JavaFX.
+Opens a local file with JavaFX `Media` / `MediaPlayer` / `MediaView`. Format support is platform-dependent; use a short H.264/AAC MP4 that already plays in the OS media player.
 
 ## Requirements
 
-- JDK 21 or newer
+- JDK 23 or newer (JavaFX 25)
 - Maven 3.9+
 
-## Part I — Hello window
+## Run
 
 ```sh
 mvn javafx:run
 ```
 
-You should see a 640×360 window titled **Mini Player** with a centered label.
+Use **Open…** and pick an `.mp4`. Play/Pause and the seek slider track `currentTimeProperty()`.
 
-## Series map
-
-| Tag | Phase | Post |
-| --- | --- | --- |
-| `part-1` | JavaFX | Stage, Scene, Application |
-| `part-2` | JavaFX | Layout and controls (planned) |
-| `part-3` | JavaFX | State and events (planned) |
-| `part-4` | JavaFX | JavaFX Media (planned) |
-| `part-5` | Beyond | VLC architecture (planned) |
-| `part-6` | Beyond | libVLC via vlcj (planned) |
-| `part-7` | Beyond | Playlist / packaging (optional) |
-
-Draft posts live in `zlu.github.io/_drafts/2026-11-22-javafx-ui-to-libvlc-part-*.md`.
-
-```sh
-git checkout part-1
-mvn javafx:run
-```
+On macOS, prefer H.264/AAC or HEVC/AAC MP4s that already play in QuickTime. JavaFX 21 had a known AVFoundation bug (audio only / black video) fixed in JavaFX 23+; this project uses 25.x.
