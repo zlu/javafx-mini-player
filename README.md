@@ -2,6 +2,8 @@
 
 Companion sample for the JavaFX / libVLC posts on [zlu.github.io](https://zlu.github.io/).
 
+This public tree stays aligned with those posts (JavaFX Media mini-player + the libVLC chrome swap). Further product work on the fuller player lives in a private repo.
+
 Same window chrome (Open, Play/Pause, seek slider). Two engines:
 
 | Main class | Engine | Run |
